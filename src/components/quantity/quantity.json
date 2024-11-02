@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_quantity_quantities",
+  "info": {
+    "displayName": "Quantity"
+  },
+  "options": {},
+  "attributes": {
+    "Quantity": {
+      "type": "integer"
+    },
+    "Price": {
+      "type": "integer"
+    }
+  }
+}

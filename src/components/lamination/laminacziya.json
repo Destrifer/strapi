@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_lamination_laminacziya",
+  "info": {
+    "displayName": "Ламинация"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Одинарная",
+        "Двойная"
+      ]
+    },
+    "coefficient": {
+      "type": "integer"
+    }
+  }
+}

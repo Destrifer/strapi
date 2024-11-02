@@ -1,5 +1,36 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface ApiProdukcziyaProdukcziya extends Struct.CollectionTypeSchema {
+  collectionName: 'produkcziyas';
+  info: {
+    singularName: 'produkcziya';
+    pluralName: 'produkcziyas';
+    displayName: '\u041F\u0440\u043E\u0434\u0443\u043A\u0446\u0438\u044F';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Schema.Attribute.String;
+    Type: Schema.Attribute.Enumeration<['Calendar', 'Card']>;
+    Quantity: Schema.Attribute.Component<'quantity.quantity', false>;
+    Lamination: Schema.Attribute.Component<'lamination.laminacziya', true>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::produkcziya.produkcziya'
+    >;
+  };
+}
+
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -850,6 +881,7 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
+      'api::produkcziya.produkcziya': ApiProdukcziyaProdukcziya;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
